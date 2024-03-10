@@ -3,6 +3,14 @@ from streamlit_webrtc import webrtc_streamer
 import av
 from yolo_predictions import YOLO_Pred
 
+st.set_page_config(page_title="Camera_Detection",
+                   layout='wide',
+                   page_icon='./images/camera.png')
+
+st.header("Detect on Live camera")
+st.write("To perform object detection on live camera select the device.")
+
+
 # load yolo model
 yolo = YOLO_Pred('./models/best.onnx',
                  './models/data.yaml')
