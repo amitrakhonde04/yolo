@@ -3,4 +3,3 @@ PyYAML
 opencv-python
 streamlit_webrtc
 av
-cv2
