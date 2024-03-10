@@ -1,5 +1,6 @@
 streamlit
 PyYAML
 opencv-python
-streamlit-webrtc
+streamlit_webrtc
 av
+cv2
