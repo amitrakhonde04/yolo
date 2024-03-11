@@ -3,3 +3,4 @@ PyYAML
 opencv-python
 streamlit_webrtc
 av
+sampling-utils

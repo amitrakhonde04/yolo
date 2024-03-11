@@ -1,6 +1,7 @@
 import streamlit as st 
-from streamlit_webrtc import webrtc_streamer
+from streamlit_webrtc import webrtc_streamer, RTCConfiguration
 import av
+
 from yolo_predictions import YOLO_Pred
 
 st.set_page_config(page_title="Camera_Detection",
@@ -26,5 +27,8 @@ def video_frame_callback(frame):
 
 
 webrtc_streamer(key="example", 
+                rtc_configuration= RTCConfiguration(
+                    {"iceServers": [{"urls": ["stun:stun1.l.google.com:19302"]}]}
+                ),
                 video_frame_callback=video_frame_callback,
                 media_stream_constraints={"video":True,"audio":False})

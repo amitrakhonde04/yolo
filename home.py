@@ -24,7 +24,7 @@ def show_home_page():
     st.write("This is the home page of our Object Detection Web App.")
     st.write("Please use the sidebar to navigate to different sections.")
     st.write("[Click here for the detection on image](/Yolo/)")
-    st.write("[Click here for the detection on camera](/webrtc/)")
+    st.write("[Click here for the detection on camera](/Live_cam/)")
 
 def show_about_page():
     st.header("About")
