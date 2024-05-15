@@ -20,11 +20,16 @@ def main():
         show_object_detection_page()
 
 def show_home_page():
-    st.header("Home Page")
-    st.write("This is the home page of our Object Detection Web App.")
-    st.write("Please use the sidebar to navigate to different sections.")
-    st.write("[Click here for the detection on image](/Upload_Image/)")
-    st.write("[Click here for the detection on camera](/Live_cam/)")
+    col1 , col2 = st.columns(2)
+    with col1:
+        st.header("Home Page")
+        st.write("This is the home page of our Object Detection Web App.")
+        st.write("Please use the sidebar to navigate to different sections.")
+        st.write("[Click here for the detection on image](/Upload_Image/)")
+        st.write("[Click here for the detection on camera](/Live_cam/)")
+
+    with col2:
+        st.image('./images/decorators.png')
 
 def show_about_page():
     st.header("About")

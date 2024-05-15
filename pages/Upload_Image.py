@@ -3,7 +3,7 @@ from yolo_predictions import YOLO_Pred
 from PIL import Image
 import numpy as np
 
-st.set_page_config(page_title="YOLO Object Detection",
+st.set_page_config(page_title="Object Detection",
                    layout='wide',
                    page_icon='./images/object.png')
 
@@ -26,7 +26,7 @@ def upload_image():
         #st.json(file_details)
         # validate file
         if file_details['filetype'] in ('image/png','image/jpeg'):
-            st.success('VALID IMAGE file type (png or jpeg')
+            st.success('VALID IMAGE file type (png or jpeg)')
             return {"file":image_file,
                     "details":file_details}
         
@@ -40,7 +40,9 @@ def main():
     
     if object:
         prediction = False
-        image_obj = Image.open(object['file'])       
+        image_obj = Image.open(object['file'])  
+        st.subheader('Check below for file details')
+        st.json(object['details'])     
         
         col1 , col2 = st.columns(2)
         
@@ -48,10 +50,7 @@ def main():
             st.info('Preview of Image')
             st.image(image_obj)
             
-        with col2:
-            st.subheader('Check below for file details')
-            st.json(object['details'])
-            button = st.button('Get Detection from YOLO')
+            button = st.button('Get Detection')
             if button:
                 with st.spinner("""
                 Geting Objets from image. please wait
@@ -62,11 +61,14 @@ def main():
                     pred_img = yolo.predictions(image_array)
                     pred_img_obj = Image.fromarray(pred_img)
                     prediction = True
-                
-        if prediction:
-            st.subheader("Predicted Image")
-            st.caption("Object detection from YOLO V5 model")
-            st.image(pred_img_obj)
+
+
+            
+        with col2:        
+            if prediction:
+                st.info('Predicted Image')
+                st.image(pred_img_obj)
+                st.caption("Object detection from YOLO V5 model")
     
     
     
