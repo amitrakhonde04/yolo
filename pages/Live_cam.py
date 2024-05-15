@@ -28,7 +28,7 @@ def video_frame_callback(frame):
 
 webrtc_streamer(key="example", 
                 rtc_configuration= RTCConfiguration(
-                    {"iceServers": [{url:['turn:turn.anyfirewall.com:443?transport=tcp'], credential: ['webrtc'],username: ['webrtc']}]}
+                    {"iceServers": [{"urls": ["stun:stun1.l.google.com:19302"]}]}
                 ),
                 video_frame_callback=video_frame_callback,
                 media_stream_constraints={"video":True,"audio":False})
